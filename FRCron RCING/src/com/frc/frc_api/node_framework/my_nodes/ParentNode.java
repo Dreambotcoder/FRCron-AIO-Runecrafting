@@ -3,8 +3,6 @@ package com.frc.frc_api.node_framework.my_nodes;
 
 import com.frc.frc_api.node_framework.tags.optional.*;
 import com.frc.frc_api.node_framework.tags.required.Node;
-import org.tbot.internal.handlers.LogHandler;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,7 +40,6 @@ public abstract class ParentNode extends ChildNode {
                         ((PrePost) node).onFinish();
                     }
                     if (node instanceof SelfRemoving && ((SelfRemoving) node).shouldRemove()){
-                        LogHandler.log("Removed node from tree.");
                         remove(node);
                     }
                 }
