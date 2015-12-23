@@ -2,6 +2,7 @@ package com.frc.frc_api.node_framework.my_nodes;
 
 import org.dreambot.api.Client;
 import org.dreambot.api.methods.MethodContext;
+import org.frcron.util.APIContext;
 
 /**
  * Created by zach on 8/29/2015.
@@ -10,7 +11,7 @@ public abstract class LoopingNode extends ChildNode {
 
     private boolean looping = true;
 
-    public LoopingNode(MethodContext context) {
+    public LoopingNode(APIContext context) {
         super(context);
     }
 
@@ -23,7 +24,7 @@ public abstract class LoopingNode extends ChildNode {
             if (result == -1){
                 break;
             }
-            context.sleep(result);
+            context.getDreambot().sleep(result);
         }
     }
 

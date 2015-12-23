@@ -7,6 +7,7 @@ import org.dreambot.api.script.ScriptManifest;
 import org.frcron.abyss.Abyss;
 import org.frcron.running.data.AltarType;
 import org.frcron.running.nodes.Classic;
+import org.frcron.util.APIContext;
 
 /**
  * Project:     Dreambot
@@ -17,9 +18,8 @@ import org.frcron.running.nodes.Classic;
 @ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.01D)
 public class Script extends AbstractScript{
 
-    private AltarType chosenType;
-
     private BaseNode baseNode = new BaseNode(this);
+    private APIContext api = new APIContext(this);
 
     /**
      * debug -> change this if you want to test abyss stuff
@@ -27,12 +27,12 @@ public class Script extends AbstractScript{
     private final boolean ABYSS = false;
 
     public void onStart() {
-        chosenType = AltarType.AIR_ALTAR;
-        baseNode.add((ABYSS) ? new Abyss(this) : new Classic(this,chosenType));
+        baseNode.add((ABYSS) ? new Abyss(api) : new Classic(api,AltarType.AIR_ALTAR));
     }
 
     @Override
     public int onLoop() {
+        baseNode.execute();
         return 0;
     }
 }

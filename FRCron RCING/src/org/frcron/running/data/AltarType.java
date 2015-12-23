@@ -1,7 +1,6 @@
 package org.frcron.running.data;
 
 import org.dreambot.api.methods.map.Area;
-import org.dreambot.api.methods.map.Tile;
 
 /**
  * Project:     Dreambot
@@ -11,8 +10,8 @@ import org.dreambot.api.methods.map.Tile;
 public enum AltarType {
 
     AIR_ALTAR(
-            new Area(new Tile(3018,3358,0), new Tile(3009,3353,0)),
-            new Area(new Tile(2990,3295,0), new Tile(2981,3289,0)),
+            new Area(3018, 3358, 3009, 3353),
+            new Area(2990, 3295, 2981, 3289),
             EntranceObject.AIR_ALTAR
     );
 

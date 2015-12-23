@@ -5,6 +5,7 @@ import com.frc.frc_api.node_framework.tags.optional.Executeable;
 import com.frc.frc_api.node_framework.tags.optional.PrePost;
 import com.frc.frc_api.node_framework.tags.required.Node;
 import org.dreambot.api.methods.MethodContext;
+import org.frcron.util.APIContext;
 
 /**
  * Created by zherridg on 7/21/2015.
@@ -12,9 +13,9 @@ import org.dreambot.api.methods.MethodContext;
 public abstract class ActionNode implements Node, Executeable, PrePost {
     //Executes every loop, dose not validate, dose not block execution.
 
-    protected MethodContext context;
+    protected APIContext context;
 
-    public ActionNode(MethodContext context) {
+    public ActionNode(APIContext context) {
         this.context = context;
     }
 

@@ -7,13 +7,14 @@ import com.frc.frc_api.node_framework.tags.optional.SelfRemoving;
 import com.frc.frc_api.node_framework.tags.optional.Validateable;
 import com.frc.frc_api.node_framework.tags.required.Node;
 import org.dreambot.api.methods.MethodContext;
+import org.frcron.util.APIContext;
 
 /**
  * Created by zherridg on 7/22/2015.
  */
 public abstract class OneTimeActionNode extends ActionNode implements SelfRemoving {
 
-    public OneTimeActionNode(MethodContext context) {
+    public OneTimeActionNode(APIContext context) {
         super(context);
     }
 

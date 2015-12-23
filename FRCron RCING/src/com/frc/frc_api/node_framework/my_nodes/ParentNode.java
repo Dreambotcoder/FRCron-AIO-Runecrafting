@@ -4,6 +4,7 @@ package com.frc.frc_api.node_framework.my_nodes;
 import com.frc.frc_api.node_framework.tags.optional.*;
 import com.frc.frc_api.node_framework.tags.required.Node;
 import org.dreambot.api.methods.MethodContext;
+import org.frcron.util.APIContext;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,9 +17,9 @@ public abstract class ParentNode extends ChildNode {
     private List<Node> nodeList = new ArrayList<>();
     private String status = "Script Startup";
 
-    public ParentNode(MethodContext context) {
+    public ParentNode(APIContext context) {
         super(context);
-        initChildren();
+        //initChildren();
     }
 
     @Override
