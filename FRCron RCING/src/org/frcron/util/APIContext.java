@@ -11,8 +11,15 @@ public class APIContext {
 
     private MethodContext context;
 
+    private FrcUtil frcUtil;
+
     public APIContext(MethodContext context) {
         this.context = context;
+        frcUtil = new FrcUtil(context);
+    }
+
+    public FrcUtil getFRC() {
+        return frcUtil;
     }
 
     public MethodContext getDreambot() {

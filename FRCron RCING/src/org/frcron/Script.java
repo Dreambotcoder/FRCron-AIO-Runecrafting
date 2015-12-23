@@ -9,13 +9,15 @@ import org.frcron.running.data.AltarType;
 import org.frcron.running.nodes.Classic;
 import org.frcron.util.APIContext;
 
+import java.awt.*;
+
 /**
  * Project:     Dreambot
  * Author:      Articron
  * Date:        23/12/2015
  */
 
-@ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.01D)
+@ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.03D)
 public class Script extends AbstractScript{
 
 
@@ -27,12 +29,17 @@ public class Script extends AbstractScript{
     private final boolean ABYSS = false;
 
     public void onStart() {
-        baseNode.add((ABYSS) ? new Abyss(api) : new Classic(api,AltarType.AIR_ALTAR));
+        baseNode.add((ABYSS) ? new Abyss(api) : new Classic(api, AltarType.AIR_ALTAR));
     }
 
     @Override
     public int onLoop() {
         baseNode.execute();
         return 0;
+    }
+
+    @Override
+    public void onPaint(Graphics graphics) {
+        graphics.drawString("Status: " + baseNode.getStatus(), 100, 100);
     }
 }
