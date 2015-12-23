@@ -26,6 +26,6 @@ public class RootTree extends NodeTree {
 
     @Override
     public boolean onValid() {
-        return false;
+        return getContext().getClient().isLoggedIn();
     }
 }
