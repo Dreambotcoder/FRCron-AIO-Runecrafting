@@ -1,6 +1,8 @@
 package org.frcron;
 
+import com.frc.frc_api.node_framework.my_nodes.BaseNode;
 import org.dreambot.api.script.AbstractScript;
+import org.frcron.abyss.Abyss;
 import org.frcron.fw.TreeController;
 import org.frcron.fw.impl.trees.RootTree;
 
@@ -12,11 +14,10 @@ import org.frcron.fw.impl.trees.RootTree;
 
 public class Script extends AbstractScript{
 
+    private BaseNode baseNode = new BaseNode(this);
+
     public void onStart() {
-        TreeController controller = new TreeController(new RootTree(this,0));
-        /**
-         * Add sets here
-         */
+        baseNode.add(new Abyss(this));
     }
 
     @Override
