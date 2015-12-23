@@ -6,11 +6,16 @@ import com.frc.frc_api.node_framework.tags.optional.PrePost;
 import com.frc.frc_api.node_framework.tags.optional.SelfRemoving;
 import com.frc.frc_api.node_framework.tags.optional.Validateable;
 import com.frc.frc_api.node_framework.tags.required.Node;
+import org.dreambot.api.methods.MethodContext;
 
 /**
  * Created by zherridg on 7/22/2015.
  */
-public abstract class OneTimeActionNode implements Node, Validateable, Executeable, PrePost, SelfRemoving {
+public abstract class OneTimeActionNode extends ActionNode implements SelfRemoving {
+
+    public OneTimeActionNode(MethodContext context) {
+        super(context);
+    }
 
     //Node that will only be execute one time then it will remove itself from the node tree. Good for initing stuff only when logged in.
     @Override

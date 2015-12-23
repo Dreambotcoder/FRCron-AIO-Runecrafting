@@ -2,6 +2,7 @@ package com.frc.frc_api.node_framework.my_nodes;
 
 import com.frc.frc_api.node_framework.tags.optional.Priority;
 import com.frc.frc_api.node_framework.tags.required.Node;
+import org.dreambot.api.methods.MethodContext;
 
 import java.util.Comparator;
 
@@ -24,6 +25,10 @@ public abstract class PriorityNode extends ParentNode {
             }
         }
     };
+
+    public PriorityNode(MethodContext context) {
+        super(context);
+    }
 
     @Override
     public void execute() {

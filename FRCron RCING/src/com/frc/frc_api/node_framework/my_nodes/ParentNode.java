@@ -3,6 +3,8 @@ package com.frc.frc_api.node_framework.my_nodes;
 
 import com.frc.frc_api.node_framework.tags.optional.*;
 import com.frc.frc_api.node_framework.tags.required.Node;
+import org.dreambot.api.methods.MethodContext;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,7 +16,8 @@ public abstract class ParentNode extends ChildNode {
     private List<Node> nodeList = new ArrayList<>();
     private String status = "Script Startup";
 
-    public ParentNode() {
+    public ParentNode(MethodContext context) {
+        super(context);
         initChildren();
     }
 
