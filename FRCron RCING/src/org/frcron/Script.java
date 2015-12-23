@@ -2,7 +2,7 @@ package org.frcron;
 
 import org.dreambot.api.script.AbstractScript;
 import org.frcron.fw.TreeController;
-import org.frcron.fw.impl.RootTree;
+import org.frcron.fw.impl.trees.RootTree;
 
 /**
  * Project:     Dreambot

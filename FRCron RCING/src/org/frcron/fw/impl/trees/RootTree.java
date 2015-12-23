@@ -1,4 +1,4 @@
-package org.frcron.fw.impl;
+package org.frcron.fw.impl.trees;
 
 import org.dreambot.api.methods.MethodContext;
 import org.frcron.fw.NodeTree;
