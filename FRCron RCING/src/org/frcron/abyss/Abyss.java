@@ -15,6 +15,6 @@ public class Abyss extends ParentNode {
 
     @Override
     public void initChildren() {
-        addAll(new AbyssTest(context.getDreambot()));
+        addAll(new AbyssTest(context));
     }
 }

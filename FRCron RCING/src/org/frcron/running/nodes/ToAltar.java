@@ -1,7 +1,6 @@
 package org.frcron.running.nodes;
 
 import com.frc.frc_api.node_framework.my_nodes.ChildNode;
-import org.dreambot.api.methods.MethodContext;
 import org.frcron.running.data.AltarType;
 import org.frcron.util.APIContext;
 
@@ -26,6 +25,13 @@ public class ToAltar extends ChildNode {
 
     @Override
     public boolean validate() {
-        return true;
+        if (type.getEntranceArea().contains(context.getDreambot().getLocalPlayer())) {
+            return false;
+        }
+        if (!context.getDreambot().getInventory().contains("Pure essence")) {
+            return false;
+        }
+        return context.getDreambot().getGameObjects()
+                .all(gameObject -> gameObject.hasAction("Craft-rune") && gameObject.getName().equals("Altar")).isEmpty();
     }
 }

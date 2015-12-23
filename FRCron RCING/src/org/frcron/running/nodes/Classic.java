@@ -21,6 +21,16 @@ public class Classic extends ParentNode {
 
     @Override
     public void initChildren() {
-        addAll(new ToAltar(context,this.type));
+        addAll(
+                new DoBank(context,this.type),
+                new ToBank(context,this.type),
+                new ExitAltar(context),
+                new CraftRunes(context),
+                new ToAltar(context,this.type),
+                new EnterAltar(context,this.type)
+
+
+
+        );
     }
 }

@@ -18,9 +18,9 @@ import org.frcron.util.APIContext;
 @ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.01D)
 public class Script extends AbstractScript{
 
-    private BaseNode baseNode = new BaseNode(this);
-    private APIContext api = new APIContext(this);
 
+    private APIContext api = new APIContext(this);
+    private BaseNode baseNode = new BaseNode(api);
     /**
      * debug -> change this if you want to test abyss stuff
      */
