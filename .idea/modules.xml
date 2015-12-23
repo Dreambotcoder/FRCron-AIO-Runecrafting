@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FRCron RCING/FRCron RCING.iml" filepath="$PROJECT_DIR$/FRCron RCING/FRCron RCING.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FRCron-AIO-Runecrafting.iml" filepath="$PROJECT_DIR$/FRCron-AIO-Runecrafting.iml" />
+    </modules>
+  </component>
+</project>
