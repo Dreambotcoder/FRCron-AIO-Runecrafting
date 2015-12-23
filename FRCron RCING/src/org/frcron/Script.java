@@ -2,6 +2,8 @@ package org.frcron;
 
 import com.frc.frc_api.node_framework.my_nodes.BaseNode;
 import org.dreambot.api.script.AbstractScript;
+import org.dreambot.api.script.Category;
+import org.dreambot.api.script.ScriptManifest;
 import org.frcron.abyss.Abyss;
 import org.frcron.running.data.AltarType;
 import org.frcron.running.nodes.Classic;
@@ -12,6 +14,7 @@ import org.frcron.running.nodes.Classic;
  * Date:        23/12/2015
  */
 
+@ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.01D)
 public class Script extends AbstractScript{
 
     private AltarType chosenType;
@@ -25,7 +28,7 @@ public class Script extends AbstractScript{
 
     public void onStart() {
         chosenType = AltarType.AIR_ALTAR;
-        baseNode.add((ABYSS) ? new Abyss(this) : new Classic(this));
+        baseNode.add((ABYSS) ? new Abyss(this) : new Classic(this,chosenType));
     }
 
     @Override
