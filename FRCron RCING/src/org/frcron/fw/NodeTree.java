@@ -1,5 +1,7 @@
 package org.frcron.fw;
 
+import org.dreambot.api.methods.MethodContext;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,11 +14,10 @@ import java.util.stream.Stream;
 public abstract class NodeTree extends Node implements Comparator<Node> {
 
     private List<Node> nodeList;
-    private int sleepTime;
 
-    public NodeTree(int sleepTime) {
+    public NodeTree(MethodContext context, int sleepTime) {
+        super(context,sleepTime);
         nodeList = new ArrayList<>();
-        this.sleepTime = sleepTime;
         isTree = true;
     }
 
@@ -64,10 +65,11 @@ public abstract class NodeTree extends Node implements Comparator<Node> {
         return node1.priority() - node2.priority();
     }
 
+
     @Override
     public int onLoop() {
         Optional<Node> candidate = getCandidateLeaf();
-        return candidate.isPresent() ? candidate.get().onLoop() : sleepTime;
+        return candidate.isPresent() ? candidate.get().onLoop() : getSleepTime();
     }
 
 }
