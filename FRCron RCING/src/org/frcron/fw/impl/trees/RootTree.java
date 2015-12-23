@@ -16,7 +16,7 @@ public class RootTree extends NodeTree {
 
     @Override
     public String getStatus() {
-        return "finding status...";
+        return (getCandidateLeaf().isPresent()) ? getCandidateLeaf().get().getStatus() : "Scanning...";
     }
 
     @Override
