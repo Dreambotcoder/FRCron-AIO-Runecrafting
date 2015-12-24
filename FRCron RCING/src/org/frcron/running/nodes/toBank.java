@@ -9,26 +9,26 @@ import org.frcron.util.APIContext;
  * Author:      Articron
  * Date:        23/12/2015
  */
-public class ToAltar extends ChildNode {
+public class ToBank extends ChildNode {
 
     private AltarType type;
 
-    public ToAltar(APIContext context, AltarType type) {
+    public ToBank(APIContext context,AltarType type) {
         super(context);
         this.type = type;
     }
 
     @Override
     public void execute() {
-        context.getCron().recursiveForceWalk(type.getEntranceArea().getRandomTile());
+        context.getCron().recursiveForceWalk((type.getBankArea().getRandomTile()));
     }
 
     @Override
     public boolean validate() {
-        if (type.getEntranceArea().contains(context.getDreambot().getLocalPlayer())) {
+        if (context.getDreambot().getInventory().contains("Pure essence")) {
             return false;
         }
-        if (!context.getDreambot().getInventory().contains("Pure essence")) {
+        if (type.getBankArea().contains(context.getDreambot().getLocalPlayer())) {
             return false;
         }
         return context.getDreambot().getGameObjects()

@@ -1,6 +1,7 @@
 package org.frcron.running.data;
 
 import org.dreambot.api.methods.map.Area;
+import org.dreambot.api.methods.walking.web.node.impl.bank.WebBankArea;
 
 /**
  * Project:     Dreambot
@@ -10,9 +11,31 @@ import org.dreambot.api.methods.map.Area;
 public enum AltarType {
 
     AIR_ALTAR(
-            new Area(3018, 3358, 3009, 3353),
+            WebBankArea.FALADOR_EAST.getArea(),
             new Area(2990, 3295, 2981, 3289),
             EntranceObject.AIR_ALTAR
+    ),
+
+    MIND_ALTAR(
+            WebBankArea.FALADOR_WEST.getArea(),
+            new Area(2986,3518,2978,3511),
+            null
+    ),
+
+    /**
+     *  TODO
+     */
+
+    FIRE_ALTAR_NO_RING(
+            WebBankArea.DUEL_ARENA.getArea(),
+            null,
+            null
+    ),
+
+    FIRE_ALTAR_RING(
+            WebBankArea.CASTLE_WARS.getArea(),
+            null,
+            null
     );
 
 

@@ -12,10 +12,12 @@ public class APIContext {
     private MethodContext context;
 
     private FrcUtil frcUtil;
+    private CronUtil cronUtil;
 
     public APIContext(MethodContext context) {
         this.context = context;
         frcUtil = new FrcUtil(context);
+        cronUtil = new CronUtil(context);
     }
 
     public FrcUtil getFRC() {
@@ -26,7 +28,7 @@ public class APIContext {
         return context;
     }
 
-    /**
-     * We can write our own stuff here
-     */
+    public CronUtil getCron() {
+        return cronUtil;
+    }
 }

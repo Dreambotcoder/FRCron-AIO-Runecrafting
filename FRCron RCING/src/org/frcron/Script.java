@@ -8,6 +8,7 @@ import org.frcron.abyss.Abyss;
 import org.frcron.running.data.AltarType;
 import org.frcron.running.nodes.Classic;
 import org.frcron.util.APIContext;
+import org.frcron.util.MouseTip;
 
 import java.awt.*;
 
@@ -20,16 +21,30 @@ import java.awt.*;
 @ScriptManifest(category = Category.RUNECRAFTING, name = "FRCron RC", author = "FRC & Articron", version = 0.03D)
 public class Script extends AbstractScript{
 
+    /**
+     * debug vars
+     */
+    private final boolean ABYSS = false;
+    private final boolean USE_CUSTOM_MOUSETIP = true;
 
     private APIContext api = new APIContext(this);
     private BaseNode baseNode = new BaseNode(api);
-    /**
-     * debug -> change this if you want to test abyss stuff
-     */
-    private final boolean ABYSS = false;
+    private MouseTip tip;
+
+    private final AltarType type = AltarType.MIND_ALTAR;
+
 
     public void onStart() {
-        baseNode.add((ABYSS) ? new Abyss(api) : new Classic(api, AltarType.AIR_ALTAR));
+        baseNode.add((ABYSS) ? new Abyss(api) : new Classic(api, type));
+        if (USE_CUSTOM_MOUSETIP) {
+            getClient().getInstance().setDrawMouse(false);
+            tip = api.getCron().getMouseTip();
+        }
+
+    }
+
+    public void onExit() {
+        getClient().getInstance().setDrawMouse(true);
     }
 
     @Override
@@ -40,6 +55,8 @@ public class Script extends AbstractScript{
 
     @Override
     public void onPaint(Graphics graphics) {
-        graphics.drawString("Status: " + baseNode.getStatus(), 100, 100);
+        //graphics.drawString("Status: " + baseNode.getStatus(), 100, 100);  Use the mouseTip instead, looks cooler xD
+        tip.setStatus(baseNode.getStatus());
+        tip.onPaint(graphics);
     }
 }

@@ -2,10 +2,9 @@ package org.frcron.running.nodes;
 
 import com.frc.frc_api.node_framework.my_nodes.ChildNode;
 import org.dreambot.api.methods.MethodProvider;
-import org.dreambot.api.methods.container.impl.bank.Bank;
-import org.dreambot.api.wrappers.interactive.GameObject;
 import org.frcron.running.data.AltarType;
 import org.frcron.util.APIContext;
+import org.frcron.util.CacheBank;
 
 /**
  * Project:     Dreambot
@@ -23,14 +22,14 @@ public class DoBank extends ChildNode {
 
     @Override
     public void execute() {
-        Bank bank = context.getDreambot().getBank();
+        CacheBank bank = new CacheBank(context.getDreambot().getClient());
         if (!bank.isOpen()) {
             if (bank.open()) {
                 MethodProvider.sleepUntil(bank::isOpen, 5000);
             }
         }
         if (bank.isOpen()) {
-            if (bank.depositAllItems()) {
+            if (!context.getDreambot().getInventory().isEmpty() && bank.depositAllItems()) {
                 MethodProvider.sleepUntil(() -> context.getDreambot().getInventory().isEmpty(),5000);
             }
             if (context.getDreambot().getInventory().isEmpty()) {
@@ -38,9 +37,7 @@ public class DoBank extends ChildNode {
                     MethodProvider.sleepUntil(() -> context.getDreambot().getInventory().contains("Pure essence"),5000);
                 }
             }
-            if (context.getDreambot().getBank().contains("Pure essence")) {
-                bank.close();
-            }
+
         }
     }
 

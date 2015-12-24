@@ -2,7 +2,9 @@ package org.frcron.running.nodes;
 
 import com.frc.frc_api.node_framework.my_nodes.ChildNode;
 import org.dreambot.api.methods.MethodProvider;
+import org.dreambot.api.methods.container.impl.bank.Bank;
 import org.dreambot.api.wrappers.interactive.GameObject;
+import org.dreambot.api.wrappers.items.Item;
 import org.frcron.util.APIContext;
 
 /**
@@ -25,6 +27,10 @@ public class CraftRunes extends ChildNode {
                 .get();
         if (altar.interact("Craft-rune")) {
             MethodProvider.sleepUntil(() -> !context.getDreambot().getInventory().contains(7936),5000);
+        }
+        Bank bank = context.getDreambot().getBank();
+        for (Item i : bank.all()) {
+            MethodProvider.log(i.getName() + " -> x" + i.getAmount());
         }
     }
 
